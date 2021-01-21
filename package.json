@@ -49,7 +49,7 @@
     "enquire-js": "^0.2.1",
     "formik": "^1.5.8",
     "http-proxy": "^1.17.0",
-    "immer": "^4.0.0",
+    "immer": "^8.0.1",
     "json-format": "^1.0.1",
     "jsonfile": "5.0.0",
     "less": "^3.10.3",
