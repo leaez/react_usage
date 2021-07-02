@@ -29,17 +29,20 @@
       "buildResources": "assets"
     }
   },
+  "babelMacros": {
+    "twin": {
+      "preset": "styled-components"
+    }
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "@craco/craco": "^6.1.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@rematch/core": "^1.2.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
     "antd": "^3.17.0",
     "axios": "^0.19.0",
     "babel-plugin-import": "^1.12.1",
@@ -64,7 +67,9 @@
     "react-list-select": "^0.4.1",
     "react-redux": "^7.1.1",
     "react-reflex": "^3.0.22",
+    "react-scripts": "^4.0.3",
     "react-tabs": "^3.0.0",
+    "styled-components": "^5.3.0",
     "three": "^0.115.0"
   },
   "homepage": "./",
@@ -77,13 +82,13 @@
     "startxx": "react-scripts start",
     "buildxx": "react-scripts build",
     "testxx": "react-scripts test",
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
     "startr": "rescripts start",
     "buildr": "rescripts build",
     "testr": "rescripts test",
-    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "postinstall": "electron-builder install-app-deps",
     "preelectron-pack": "yarn build",
     "electron-pack": "electron-builder -l"
@@ -104,9 +109,13 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^10.2.6",
     "concurrently": "^5.1.0",
     "electron": "^8.2.3",
     "electron-builder": "^22.4.1",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4",
+    "twin.macro": "^2.5.0",
     "typescript": "^3.8.3",
     "wait-on": "^4.0.2"
   }

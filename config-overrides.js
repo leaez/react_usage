@@ -13,7 +13,7 @@ module.exports = override(
   }),
   function(config, env) {
     // ...add your webpack config
-    config.target = 'electron-renderer'
+    //config.target = 'electron-renderer'
     return config;
   },
 );
