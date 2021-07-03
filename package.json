@@ -1,0 +1,122 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@domain.com",
+    "url": "https://your-website.com"
+  },
+  "build": {
+    "appId": "com.b0tr.app",
+    "productName": "b0tr",
+    "copyright": "Copyright © 2019 ${author}",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "category": "Development"
+    },
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "babelMacros": {
+    "twin": {
+      "preset": "styled-components"
+    }
+  },
+  "dependencies": {
+    "@craco/craco": "^6.1.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@rematch/core": "^1.2.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "antd": "^3.17.0",
+    "axios": "^0.19.0",
+    "babel-plugin-import": "^1.12.1",
+    "classnames": "^2.2.6",
+    "customize-cra": "^0.7.0",
+    "electron-is-dev": "^1.0.1",
+    "enquire-js": "^0.2.1",
+    "formik": "^1.5.8",
+    "http-proxy": "^1.17.0",
+    "immer": "^4.0.0",
+    "json-format": "^1.0.1",
+    "jsonfile": "5.0.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "lodash": "^4.17.11",
+    "path-to-regexp": "^2.4.0",
+    "rc-tree": "^2.1.2",
+    "react": "^16.9.0",
+    "react-app-rewired": "^2.1.3",
+    "react-dom": "^16.9.0",
+    "react-helmet": "^5.2.0",
+    "react-list-select": "^0.4.1",
+    "react-redux": "^7.1.1",
+    "react-reflex": "^3.0.22",
+    "react-scripts": "^4.0.3",
+    "react-tabs": "^3.0.0",
+    "styled-components": "^5.3.0",
+    "three": "^0.115.0"
+  },
+  "homepage": "./",
+  "main": "public/electron.js",
+  "scripts": {
+    "startx": "react-scripts start",
+    "buildx": "react-scripts build",
+    "testx": "react-scripts test",
+    "ejectx": "react-scripts eject",
+    "startxx": "react-scripts start",
+    "buildxx": "react-scripts build",
+    "testxx": "react-scripts test",
+    "startr": "rescripts start",
+    "buildr": "rescripts build",
+    "testr": "rescripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "electron-builder -l"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "concurrently": "^5.1.0",
+    "electron": "^8.2.3",
+    "electron-builder": "^22.4.1",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4",
+    "twin.macro": "^2.5.0",
+    "typescript": "^3.8.3",
+    "wait-on": "^4.0.2"
+  }
+}
