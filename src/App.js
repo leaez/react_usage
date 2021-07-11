@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import tw from 'twin.macro';
 import './App.css';
 import Particles from './components/particle';
-import AddBlog from './components/addBlog';
+import AddBlogs from './components/addBlogs';
+//import AddBlogs from './components/formikExample';
 const styles = {
   // Move long class sets out of jsx to keep it scannable
   container: ({ hasBackground }) => [
@@ -14,21 +15,8 @@ const styles = {
 //css={styles.container({ hasBackground: true })}
 const App = () => (
   <>
-    <Particles
-      style={{
-        position: 'fixed',
-        top: 0,
-        right: 0,
-      }}
-    />
-    <div
-      style={{
-        position: 'relative',
-        zIndex: 1,
-        top: 0,
-        right: 0,
-      }}>
-      <AddBlog />
+    <div tw="relative z-0 top-0 right-0 bg-gray-100">
+      <AddBlogs />
       <div tw="flex flex-col justify-center h-full gap-y-5">
         <header className="App-header">
           <p>
@@ -51,6 +39,13 @@ const App = () => (
 );
 
 /*
+    <Particles
+      style={{
+        position: 'fixed',
+        top: 0,
+        right: 0,
+      }}
+    />
 
     <div tw="flex flex-col justify-center h-full gap-y-5">
       <header className="App-header">

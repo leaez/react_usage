@@ -9,14 +9,17 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 //import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import PropTypes from 'prop-types';
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-const RadioType = ({ options, typeValue, onSetValue }) => {
+const RadioType = ({ hidden, typeValue, options, onSetValue }) => {
   const handleRadioChange = (event) => {
     onSetValue(event.target.value);
   };
 
-  return (
+  return hidden ? (
+    <></>
+  ) : (
     <>
       <FormLabel component="legend">labelPlacement</FormLabel>
       <RadioGroup
@@ -40,6 +43,7 @@ const RadioType = ({ options, typeValue, onSetValue }) => {
   );
 };
 RadioType.propTypes = {
+  hidden: PropTypes.bool,
   typeValue: PropTypes.string,
   options: PropTypes.array,
   onSetValue: PropTypes.func,
@@ -52,6 +56,17 @@ const validationSchema = yup.object({
     .min(1, 'content should be of minimum 8 characters length')
     .required('content is required'),
 });
+
+const StyledInput = styled.textarea(({ hasBorder }) => [
+  `color: black;`,
+  hasBorder == 'h3'
+    ? tw`text-xl`
+    : hasBorder == 'h1'
+    ? tw`text-5xl`
+    : hasBorder == 'h2'
+    ? tw`text-3xl`
+    : tw`text-lg`,
+]);
 
 const AddBlog = () => {
   const [typeValue, setValue] = React.useState('p');
@@ -70,6 +85,9 @@ const AddBlog = () => {
   const onSetValue = (v) => {
     setValue(v);
   };
+  const onBlur = (v) => {
+    console.log(v);
+  };
   //console.log(typeValue);
   const options = [
     { key: 1, value: 'h1', label: 'h1' },
@@ -77,14 +95,18 @@ const AddBlog = () => {
     { key: 3, value: 'h3', label: 'h3' },
     { key: 4, value: 'p', label: 'p' },
   ];
+
   const optis = {
+    hidden: true,
     options,
     typeValue,
     onSetValue: (v) => {
       formik.values.type = v;
       setValue(v);
+      console.log(typeof v);
     },
   };
+  const bgx = 'text-5xl';
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -96,6 +118,17 @@ const AddBlog = () => {
           value={formik.values.type}
         />
         <RadioType {...optis} />
+        <label htmlFor="lastName">Last Name</label>
+        <StyledInput
+          hasBorder={typeValue}
+          css={[tw`bg-gray-200 bg-opacity-10 border-none`]}
+          id="lastName"
+          name="lastName"
+          type="text"
+          onBlur={onBlur}
+          onChange={formik.handleChange}
+          value={formik.values.lastName}
+        />
         <TextField
           fullWidth
           id="email"
@@ -107,7 +140,7 @@ const AddBlog = () => {
           helperText={formik.touched.email && formik.errors.email}
         />
         <TextField
-          tw="text-2xl"
+          tw="bg-green-400 text-5xl"
           fullWidth
           id="content"
           name="content"
